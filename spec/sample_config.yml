@@ -1,0 +1,10 @@
+server: &backup_server
+    hostname: backup-server
+    directory: /var/lib/backup
+
+backup:
+    - directory: /var/lib/dir1
+      server: *backup_server
+
+    - directory: /var/lib/dir2
+      server: *backup_server
