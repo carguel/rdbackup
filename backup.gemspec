@@ -5,8 +5,12 @@ require File.expand_path('../lib/backup/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = "backup"
   gem.version       = Backup::VERSION
-  gem.summary       = %q{TODO: Summary}
-  gem.description   = %q{TODO: Description}
+  gem.summary       = %q{Backup local directories to a remote server leveraging rdiff-backup.}
+  gem.description   = <<EOD
+This gem provides an executable script to backup local directories.
+THe actual backup is ensured by rdiff-backup.
+The backup configuration is provided by a YAML configuration.
+EOD
   gem.license       = "MIT"
   gem.authors       = ["Christophe Arguel"]
   gem.email         = "christophe.arguel@free.fr"
