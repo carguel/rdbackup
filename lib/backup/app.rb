@@ -15,8 +15,8 @@ module Backup
     # Call rdiff-backup for each source directory to backup
     def backup
       @config["backup"].each do |item|
-        rc = system("rdiff-backup #{item["directory"]} #{item["server"]["hostname"]}::#{item["server"]["directory"]}")
-        raise "rdiff-backup failed" if rc != 0
+        well_executed = system("rdiff-backup #{item["directory"]} #{item["server"]["hostname"]}::#{item["server"]["directory"]}")
+        raise "rdiff-backup failed #{well_executed}" unless well_executed
       end
     end
   end
