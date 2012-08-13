@@ -1,6 +1,6 @@
 gem 'rspec', '~> 2.4'
 require 'rspec'
-require 'backup/version'
+require 'rdbackup/version'
 
 #include Backup
 def sample_config

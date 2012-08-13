@@ -1,6 +1,6 @@
 require 'psych'
 
-module Backup
+module RdBackup
 
   # Backup all directories define in a YAML configuration file.
   # The actuel backup is ensured by rdiff-backup command.
@@ -16,7 +16,7 @@ module Backup
     def backup
       @config["backup"].each do |item|
         well_executed = system("rdiff-backup #{item["directory"]} #{item["server"]["hostname"]}::#{item["server"]["directory"]}")
-        raise "rdiff-backup failed #{well_executed}" unless well_executed
+        raise "rdiff-backup failed" unless well_executed
       end
     end
   end

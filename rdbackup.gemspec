@@ -3,8 +3,8 @@
 require File.expand_path('../lib/backup/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name          = "backup"
-  gem.version       = Backup::VERSION
+  gem.name          = "rdbackup"
+  gem.version       = RdBackup::VERSION
   gem.summary       = %q{Backup local directories to a remote server leveraging rdiff-backup.}
   gem.description   = <<EOD
 This gem provides an executable script to backup local directories.
@@ -14,7 +14,7 @@ EOD
   gem.license       = "MIT"
   gem.authors       = ["Christophe Arguel"]
   gem.email         = "christophe.arguel@free.fr"
-  gem.homepage      = "https://rubygems.org/gems/backup"
+  gem.homepage      = "https://rubygems.org/gems/rdbackup"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

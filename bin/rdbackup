@@ -1,18 +1,18 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby 
 
 lib_dir=File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
 $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 
 require 'thor'
-require 'backup'
+require 'rdbackup'
 
-class BackupCli < Thor
+class RdBackupCli < Thor
 
   include Thor::Actions
 
   desc "go CONFIF", <<-DOC
 Make a backup considering the given YAML configuration file.
-If CONFIG is not provided try to load ~/.backup.conf or /etc/backup.conf.
+If CONFIG is not provided try to load ~/.rdbackup.conf or /etc/rdbackup.conf.
   DOC
   def go(config=nil)
     config ||= default_config
@@ -24,7 +24,7 @@ If CONFIG is not provided try to load ~/.backup.conf or /etc/backup.conf.
 
 
     begin
-    app = Backup::Application.new config
+    app = RdBackup::Application.new config
       app.backup
     rescue Exception => message
       error ""
@@ -40,7 +40,7 @@ If CONFIG is not provided try to load ~/.backup.conf or /etc/backup.conf.
     def default_config
       config = nil
       catch(:config_found) {
-        [File.join(ENV["HOME"], ".backup.conf"), File.join("/etc", "backup.conf")].each do |conf|
+        [File.join(ENV["HOME"], ".rdbackup.conf"), File.join("/etc", "rdbackup.conf")].each do |conf|
           if File.exist? conf
             config = conf
             throw :config_found
@@ -54,4 +54,4 @@ If CONFIG is not provided try to load ~/.backup.conf or /etc/backup.conf.
   end
 end
 
-BackupCli.start
+RdBackupCli.start

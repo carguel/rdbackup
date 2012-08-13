@@ -1,12 +1,12 @@
 require 'spec_helper'
-require 'backup'
+require 'rdbackup'
 
-module Backup
+module RdBackup
 
   describe Application do
 
     context "after loading sample_config.yml" do
-      subject { Backup::Application.new(sample_config) }
+      subject { RdBackup::Application.new(sample_config) }
 
       it "should call rdiff-backup for each source diretory to backup" do
         subject.should_receive(:system).with("rdiff-backup /var/lib/dir1 backup-server::/var/lib/backup").ordered.and_return(0)
