@@ -1,4 +1,4 @@
-# rbackup
+# rdbackup
 
 Backup local directories to a remote server leveraging rdiff-backup.
 
