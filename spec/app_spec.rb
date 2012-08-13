@@ -9,8 +9,8 @@ module RdBackup
       subject { RdBackup::Application.new(sample_config) }
 
       it "should call rdiff-backup for each source diretory to backup" do
-        subject.should_receive(:system).with("rdiff-backup /var/lib/dir1 backup-server::/var/lib/backup").ordered.and_return(0)
-        subject.should_receive(:system).with("rdiff-backup /var/lib/dir2 backup-server::/var/lib/backup").ordered.and_return(0)
+        subject.should_receive(:system).with("rdiff-backup /var/lib/dir1 backup-server::/var/lib/backup/dir1").ordered.and_return(0)
+        subject.should_receive(:system).with("rdiff-backup /var/lib/dir2 backup-server::/var/lib/backup/dir2").ordered.and_return(0)
         subject.backup
       end
 
