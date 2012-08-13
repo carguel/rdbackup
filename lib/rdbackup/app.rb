@@ -15,7 +15,13 @@ module RdBackup
     # Call rdiff-backup for each source directory to backup
     def backup
       @config["backup"].each do |item|
-        well_executed = system("rdiff-backup #{item["directory"]} #{item["server"]["hostname"]}::#{item["server"]["directory"]}")
+        local_dir=item["directory"]
+        remote_host=item["server"]["hostname"]
+        remote_dir=item["server"]["directory"]
+
+        additional_dir = local_dir.split('/').last
+
+        well_executed = system("rdiff-backup #{local_dir} #{remote_host}::#{remote_dir}/#{additional_dir}")
         raise "rdiff-backup failed" unless well_executed
       end
     end
